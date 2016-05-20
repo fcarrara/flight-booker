@@ -9,7 +9,7 @@ The application lets you book a one-way flight ticket, including passenger and b
 * "accepts_nested_attributes_for" method
 * Advanced Forms (Dropdown menus, Radio buttons, and Nested submissions)
 * DB seed
-* Integration of payment method using Paypal or Stripe
+* Integration of payment method using Paypal or Stripe (Pending implementation)
 
 
-Check it out! [App in Heroku]()
+Check it out! [App in Heroku](https://flight-booker-rails.herokuapp.com)
