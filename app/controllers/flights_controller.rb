@@ -3,7 +3,7 @@ class FlightsController < ApplicationController
   def index
     @flight = Flight.new
     @airports = Airport.all.map { |airport| [airport.code + " - " + airport.name, airport.id] }
-    @dates = Flight.order("datetime").all.uniq.map { |flight| flight.datetime.strftime("%d-%m-%Y") }
+    @dates = Flight.order("datetime").all.map { |flight| flight.datetime.strftime("%d-%m-%Y") }.uniq
 
     if !params[:flight].nil?
       search
