@@ -1,0 +1,35 @@
+<div class="container">
+  <h1>Booking reference: <%= @booking.id %></h1>
+  <table class="table-fill">
+    <thead>
+      <tr>
+        <th>Flight Number</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Departure</th>
+        <th>Destination</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @booking.flight.number %></td>
+        <td><%= @booking.flight.datetime.strftime("%d/%m/%Y") %></td>
+        <td><%= @booking.flight.datetime.strftime("%H:%M") %></td>
+        <td><%= @booking.flight.from_airport.code %> - <%= @booking.flight.from_airport.name %></td>
+        <td><%= @booking.flight.to_airport.code %> - <%= @booking.flight.to_airport.name %></td>
+        <td>$ <%= @booking.flight.price %></td>
+      </tr>      
+    </tbody>
+  </table>
+  <div class="passengers-container">
+    <% @count = 0 %>
+    <% @booking.passengers.each do |passenger| %> 
+      <div class="passenger">
+        <h2>Passenger <%= @count += 1 %></h2>
+        <p><%= passenger.name %></p>
+        <p><%= passenger.email %></p>
+      </div>
+    <% end %>
+  </div>
+</div>

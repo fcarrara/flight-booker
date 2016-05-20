@@ -1,0 +1,43 @@
+<div class="index-container">
+  <div class="search-panel">
+    <h1>Search Flights</h1>
+    <%= form_for(@flight, method: :get, remote: true) do |f| %> 
+
+      <div>
+        <div class="label-select">
+          <%= f.label(:from_airport) %>
+          <%= f.select(:from_airport, @airports) %>
+        </div>
+        <div class="label-select">
+          <%= f.label(:to_airport) %>
+          <%= f.select(:to_airport, @airports) %>
+        </div>
+      </div>
+
+      <div class="label-select">
+        <%= f.label("Date") %>
+        <%= f.select(:datetime, @dates) %>
+      </div>
+      <div class="label-select">
+        <%= f.label("Passengers") %> 
+        <%= f.select(:num_tickets, 1..4) %>
+      </div>
+
+      <%= f.submit "Search", id: "search-btn", class: "btn" %>
+    <% end %>
+  </div>
+</div>
+
+<div id ="result">
+
+</div>
+
+<script type="text/javascript">
+    $('#search-btn').click(function () {
+        $from = $('#flight_from_airport option:selected').text();
+        $to = $('#flight_to_airport option:selected').text();
+        if ($from == $to) {
+            alert("The origin and destination must be different.");
+        }
+    });
+</script>

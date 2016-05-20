@@ -1,0 +1,15 @@
+<% if @booking.save %>
+
+  window.setTimeout(function() {
+      window.location.href = "<%= booking_path(@booking) %>";
+  }, 1000);
+
+<% else %>
+
+  $('#errors-container').html("<%= j render 'shared/error_messages', object: @booking %>");
+
+  $('html,body').animate({
+      scrollTop: $("#errors-container").offset().top
+  });
+
+<% end %>

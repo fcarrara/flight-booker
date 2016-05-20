@@ -1,0 +1,37 @@
+<div class="container">
+  <% if !@flights.nil? && !@flights.empty? %>
+    <h1 id ="flights-title">Flights</h1>
+    <%= form_for(@booking, url: new_booking_path, method: :get) do |f| %>
+      <table class="table-fill">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Flight Number</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Departure</th>
+            <th>Destination</th>
+            <th>Passengers</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @flights.each do |flight| %>
+            <tr>
+              <td><%= f.radio_button :flight_id, flight.id, :checked => (flight == @flights.first) %></td>
+              <td><%= flight.number %></td>
+              <td><%= flight.datetime.strftime("%d/%m/%Y") %></td>
+              <td><%= flight.datetime.strftime("%H:%M") %></td>
+              <td><%= flight.from_airport.code %> - <%= flight.from_airport.name %></td>
+              <td><%= flight.to_airport.code %> - <%= flight.to_airport.name %></td>
+              <td><%= params[:flight][:num_tickets] %></td>
+              <td>$ <%= flight.price %></td>
+            </tr>      
+          <% end %>
+        </tbody>
+      </table>
+        <%= hidden_field_tag :num_tickets, params[:flight][:num_tickets] %>
+        <%= f.submit "Book flight", id: "confirm-btn", class: "btn" %>
+    <% end %>
+  <% end %>
+</div>

@@ -1,0 +1,43 @@
+<div class="container">
+  <h1>Booking</h1>
+  <table class="table-fill">
+    <thead>
+      <tr>
+        <th>Flight Number</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Departure</th>
+        <th>Destination</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @flight.number %></td>
+        <td><%= @flight.datetime.strftime("%d/%m/%Y") %></td>
+        <td><%= @flight.datetime.strftime("%H:%M") %></td>
+        <td><%= @flight.from_airport.code %> - <%= @flight.from_airport.name %></td>
+        <td><%= @flight.to_airport.code %> - <%= @flight.to_airport.name %></td>
+        <td>$ <%= @flight.price %></td>
+      </tr>      
+    </tbody>
+  </table>
+  <div id="errors-container"></div>
+  <div id="passengers-form">
+    <%= form_for @booking, remote: true do |f| %>
+      <% @count = 0 %>
+      <%= f.fields_for :passengers do |passenger_form| %>
+        <div class="passenger">
+          <h2>Passenger <%= @count += 1 %></h2>
+          <%= passenger_form.label :name %>
+          <%= passenger_form.text_field :name %>
+
+          <%= passenger_form.label :email %>
+          <%= passenger_form.email_field :email %>
+        </div>
+      <% end %>
+      <%= f.hidden_field :flight_id, value: @flight.id %>
+      <%= f.submit "Confirm booking", class: "btn booking-btn" %>
+    <% end %>
+  </div>
+</div>

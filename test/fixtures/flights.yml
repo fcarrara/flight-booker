@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  number: MyString
+  string: MyString
+  from_airport_id: 
+  to_airport_id: 
+  date: 2016-05-16 16:57:14
+  time: 2016-05-16 16:57:14
+  duration: MyString
+
+two:
+  number: MyString
+  string: MyString
+  from_airport_id: 
+  to_airport_id: 
+  date: 2016-05-16 16:57:14
+  time: 2016-05-16 16:57:14
+  duration: MyString
