@@ -1,0 +1,14 @@
+Thank you for booking on FlightBooker, <%= @passenger.name %>
+===========================================================================
+      
+Your booking has been successfully processed. You flight details are:
+
+Flight number: <%= @flight.number %>
+Origin: <%= @flight.from_airport.code + " - " + @flight.from_airport.name %>
+Destination: <%= @flight.to_airport.code + " - " + @flight.to_airport.name %>
+Duration: <%= @flight.duration %>
+Date: <%= @flight.datetime %>
+    
+To check your booking online, just follow this link: <%= @url %>.
+
+Enjoy your flight!

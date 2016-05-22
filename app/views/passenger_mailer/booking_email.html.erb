@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Thank you for booking on FlightBooker, <%= @passenger.name %></h1>
+    <p>
+      Your booking has been successfully processed. You flight details are: <br>
+      Flight number: <%= @flight.number %><br>
+      Origin: <%= @flight.from_airport.code + " - " + @flight.from_airport.name %> <br>
+      Destination: <%= @flight.to_airport.code + " - " + @flight.to_airport.name %> <br>
+      Duration: <%= @flight.duration %> <br>
+      Date: <%= @flight.datetime %> <br>
+    </p>
+    <p>
+      To check your booking online, just follow this link: <%= @url %>.
+    </p>
+    <p>Enjoy your flight!</p>
+  </body>
+</html>

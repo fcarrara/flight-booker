@@ -10,6 +10,7 @@ class BookingsController < ApplicationController
     respond_to do |format|
       if @booking.save
         flash[:success] = "The flight has been successfully booked."
+        @booking.passengers.each { |passenger| PassengerMailer.booking_email(passenger).deliver_now }
         format.html {redirect_to @booking }
         format.js
       else
